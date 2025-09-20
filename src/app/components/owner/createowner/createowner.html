@@ -1,0 +1,55 @@
+<div class="max-w-md mx-auto mt-10 bg-white rounded-2xl shadow p-6">
+  <h2 class="text-2xl font-semibold mb-4 text-center">Registrar Propietario</h2>
+
+  <form 
+    #f="ngForm" 
+    (ngSubmit)="guardar(f)" 
+    novalidate 
+    class="flex flex-col gap-4"
+  >
+    <input 
+      pInputText
+      type="text"
+      name="name"
+      [(ngModel)]="owner.name"
+      placeholder="Nombre"
+      required
+      autocomplete="off"
+      class="w-full bg-gray-200 text-gray-800 rounded-md p-2
+             focus:outline-none focus:ring-2 focus:ring-green-400"
+    />
+
+    <input 
+      pInputText
+      type="tel"
+      name="phone"
+      [(ngModel)]="owner.phone"
+      placeholder="Teléfono"
+      required
+      autocomplete="off"
+      class="w-full bg-gray-200 text-gray-800 rounded-md p-2
+             focus:outline-none focus:ring-2 focus:ring-green-400"
+    />
+
+    <input 
+      pInputText
+      type="email"
+      name="email"
+      [(ngModel)]="owner.email"
+      placeholder="Correo"
+      required
+      autocomplete="off"
+      class="w-full bg-gray-200 text-gray-800 rounded-md p-2
+             focus:outline-none focus:ring-2 focus:ring-green-400"
+    />
+
+    <button 
+      pButton 
+      type="submit"
+      label="Guardar" 
+      icon="pi pi-save"
+      class="mt-6 w-full p-button-success"
+    >
+    </button>
+  </form>
+</div>

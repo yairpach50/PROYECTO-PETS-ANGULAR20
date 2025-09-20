@@ -1,0 +1,40 @@
+<div class="flex flex-wrap gap-4 justify-end mr-10 mb-4">
+  <p-button 
+      label="NUEVO" 
+      icon="pi pi-plus"
+      styleClass="p-button-success" 
+      [routerLink]="['/medicalhistories/nuevo']">
+  </p-button>
+</div>
+
+<div class="card">
+  <p-table [value]="histories" stripedRows [tableStyle]="{'min-width': '50rem'}">
+    <ng-template #header>
+      <tr>
+        <th>ID</th>
+        <th>Mascota</th>
+        <th>Descripción</th>
+        <th>Fecha</th>
+        <th>Status</th>
+        <th>Actions</th>
+      </tr>
+    </ng-template>
+
+    <ng-template #body let-history>
+      <tr>
+        <td>{{ history.id }}</td>
+        <td>{{ history.petId }}</td>
+        <td>{{ history.description }}</td>
+        <td>{{ history.date | date:'dd/MM/yyyy' }}</td>
+        <td>{{ history.status }}</td>
+        <td>
+          <p-button
+            icon="pi pi-pencil"
+            styleClass="p-button-warning p-button-sm"
+            [routerLink]="['/medicalhistory/editar', history.id]">
+          </p-button>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>
