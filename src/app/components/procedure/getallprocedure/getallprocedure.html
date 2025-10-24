@@ -1,1 +1,44 @@
-<p>getallprocedure works!</p>
+<div class="flex flex-wrap gap-4 justify-end mr-10 mb-4">
+    <p-button 
+        label="NUEVO PROCEDIMIENTO" 
+        icon="pi pi-plus"
+        styleClass="p-button-success" 
+        (click)="addProcedure()">
+    </p-button>
+</div>
+
+<div class="card">
+    <p-table [value]="procedures" stripedRows [tableStyle]="{'min-width': '50rem'}">
+        <ng-template pTemplate="header">
+            <tr>
+                <th>ID</th>
+                <th>ID Mascota</th>
+                <th>Nombre</th>
+                <th>Descripción</th>
+                <th>Fecha</th>
+                <th>Estatus</th>
+                <th>Acciones</th>
+            </tr>
+        </ng-template>
+
+        <ng-template pTemplate="body" let-procedure>
+            <tr>
+                <td>{{procedure.id}}</td>
+                <td>{{procedure.petId}}</td>
+                <td>{{procedure.name}}</td>
+                <td>{{procedure.description}}</td>
+                <td>{{procedure.date | date:'dd/MM/yyyy'}}</td>
+                <td>
+                    <p-tag [value]="procedure.status" [severity]="procedure.status === 'activo' ? 'success' : 'info'"></p-tag>
+                </td>
+                <td>
+                    <p-button
+                        icon="pi pi-pencil"
+                        styleClass="p-button-warning p-button-sm"
+                        [routerLink]="['/procedures/update', procedure.id]">
+                    </p-button>
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>

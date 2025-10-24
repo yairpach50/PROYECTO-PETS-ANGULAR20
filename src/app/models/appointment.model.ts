@@ -4,7 +4,7 @@ export interface Appointment {
   veterinarianId: number;
   date: Date;
   reason: string;
-  status: 'programado' | 'completetado' | 'cancelado';
+  status: 'programado' | 'completado' | 'cancelado';
   createdAt: Date;
   updatedAt: Date;
 }

@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+
 
 @Component({
   selector: 'app-createpayment',
@@ -7,6 +8,6 @@ import { Component } from '@angular/core';
   templateUrl: './createpayment.html',
   styleUrls: ['./createpayment.css']
 })
-export class CreatePayment {
+export class CreatePayment  {
 
 }

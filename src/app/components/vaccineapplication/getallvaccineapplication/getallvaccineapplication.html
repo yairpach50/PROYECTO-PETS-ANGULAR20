@@ -1,1 +1,44 @@
-<p>getallvaccineapplication works!</p>
+<div class="flex flex-wrap gap-4 justify-end mr-10 mb-4">
+    <p-button 
+        label="NUEVA APLICACIÓN" 
+        icon="pi pi-plus"
+        styleClass="p-button-success" 
+        (click)="addVaccineApplication()">
+    </p-button>
+</div>
+
+<div class="card">
+    <p-table [value]="applications" stripedRows [tableStyle]="{'min-width': '50rem'}">
+        <ng-template pTemplate="header">
+            <tr>
+                <th>ID</th>
+                <th>ID Mascota</th>
+                <th>ID Vacuna</th>
+                <th>Fecha</th>
+                <th>Dosis</th>
+                <th>Estatus</th>
+                <th>Acciones</th>
+            </tr>
+        </ng-template>
+
+        <ng-template pTemplate="body" let-app>
+            <tr>
+                <td>{{app.id}}</td>
+                <td>{{app.petId}}</td>
+                <td>{{app.vaccineId}}</td>
+                <td>{{app.date | date:'dd/MM/yyyy'}}</td>
+                <td>{{app.dose}}</td>
+                <td>
+                    <p-tag [value]="app.status" [severity]="app.status === 'aplicada' ? 'success' : 'info'"></p-tag>
+                </td>
+                <td>
+                    <p-button
+                        icon="pi pi-pencil"
+                        styleClass="p-button-warning p-button-sm"
+                        [routerLink]="['/vaccineapplications/update', app.id]">
+                    </p-button>
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>

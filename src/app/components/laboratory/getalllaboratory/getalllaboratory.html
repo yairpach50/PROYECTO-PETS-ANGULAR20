@@ -1,1 +1,56 @@
-<p>getalllaboratory works!</p>
+<div class="p-6">
+    <div class="flex items-center justify-between mb-6">
+        <h2 class="text-2xl font-bold text-gray-900">Resultados de Laboratorio</h2>
+        <p-button 
+            label="Nuevo Laboratorio" 
+            icon="pi pi-plus" 
+            styleClass="p-button-success" 
+            (click)="addLaboratory()">
+        </p-button>
+    </div>
+
+    <p-table [value]="laboratories" stripedRows [tableStyle]="{'min-width': '50rem'}" class="shadow-md rounded-lg overflow-hidden">
+        <ng-template pTemplate="header">
+            <tr>
+                <th>ID</th>
+                <th>ID Mascota</th>
+                <th>Examen</th>
+                <th>Resultado</th>
+                <th>Fecha</th>
+                <th>Estatus</th>
+                <th>Acciones</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-lab>
+            <tr>
+                <td>{{ lab.id }}</td>
+                <td>{{ lab.petId }}</td>
+                <td>{{ lab.testName }}</td>
+                <td>{{ lab.result }}</td>
+                <td>{{ lab.date | date: 'mediumDate' }}</td>
+                <td>
+                    <p-tag [value]="lab.status" [severity]="getSeverity(lab.status)"></p-tag>
+                </td>
+                <td>
+                    <div class="flex gap-2">
+                        <p-button 
+                            icon="pi pi-pencil" 
+                            styleClass="p-button-rounded p-button-info p-button-text" 
+                            (click)="editLaboratory(lab.id)">
+                        </p-button>
+                        <p-button 
+                            icon="pi pi-trash" 
+                            styleClass="p-button-rounded p-button-danger p-button-text" 
+                            (click)="deleteLaboratory(lab.id)">
+                        </p-button>
+                    </div>
+                </td>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="emptymessage">
+            <tr>
+                <td colspan="7" class="text-center text-gray-500">No se encontraron resultados de laboratorio.</td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>

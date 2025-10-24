@@ -1,1 +1,51 @@
-<p>getallappointment works!</p>
+<div class="flex flex-wrap gap-4 justify-end mr-10 mb-4">
+  <p-button 
+      label="NUEVO" 
+      icon="pi pi-plus"
+      styleClass="p-button-success" 
+      [routerLink]="['/appointments/nuevo']">
+  </p-button>
+</div>
+
+<div class="card">
+  <p-table [value]="appointments" stripedRows [tableStyle]="{'min-width': '60rem'}">
+    <ng-template #header>
+      <tr>
+        <th>ID</th>
+        <th>Mascota</th>
+        <th>Veterinario</th>
+        <th>Fecha</th>
+        <th>Motivo</th>
+        <th>Estado</th>
+        <th>Acciones</th>
+      </tr>
+    </ng-template>
+
+    <ng-template #body let-cita>
+      <tr>
+        <td>{{ cita.id }}</td>
+        <td>{{ cita.petId }}</td>
+        <td>{{ cita.veterinarianId }}</td>
+        <td>{{ cita.date | date:'dd/MM/yyyy' }}</td>
+        <td>{{ cita.reason }}</td>
+        <td>
+          <span 
+            [ngClass]="{
+              'bg-blue-100 text-blue-700 px-2 py-1 rounded text-xs': cita.status === 'programado',
+              'bg-green-100 text-green-700 px-2 py-1 rounded text-xs': cita.status === 'completado',
+              'bg-red-100 text-red-700 px-2 py-1 rounded text-xs': cita.status === 'cancelado'
+            }">
+            {{ cita.status }}
+          </span>
+        </td>
+        <td>
+          <p-button
+            icon="pi pi-pencil"
+            styleClass="p-button-warning p-button-sm mr-2"
+            [routerLink]="['/appointments/editar', cita.id]">
+          </p-button>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>

@@ -2,6 +2,7 @@
 @import "tailwindcss";
 @import 'primeicons/primeicons.css';
 
+
 /* Sobrescribir el estilo de pInputText cuando está en focus */
 .p-inputtext {
   background-color: #e5e7eb !important; /* gris claro (bg-gray-200) */
@@ -12,3 +13,4 @@
   background-color: #e5e7eb !important;
   box-shadow: 0 0 0 2px #34d399 !important; /* borde verde al focus */
 }
+

@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-createappointment',
-  standalone: true, 
+  selector: 'app-createlappointment',
+  standalone: true,
   imports: [],
   templateUrl: './createappointment.html',
-  styleUrls: ['./createappointment.css']  
+  styleUrls: ['./createappointment.css']
 })
 export class CreateAppointment {
 

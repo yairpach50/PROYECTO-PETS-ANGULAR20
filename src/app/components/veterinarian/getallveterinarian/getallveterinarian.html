@@ -1,1 +1,44 @@
-<p>getallveterinarian works!</p>
+<div class="flex flex-wrap gap-4 justify-end mr-10 mb-4">
+    <p-button 
+        label="NUEVO VETERINARIO" 
+        icon="pi pi-plus"
+        styleClass="p-button-success" 
+        (click)="addVeterinarian()">
+    </p-button>
+</div>
+
+<div class="card">
+    <p-table [value]="veterinarians" stripedRows [tableStyle]="{'min-width': '50rem'}">
+        <ng-template pTemplate="header">
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Especialidad</th>
+                <th>Teléfono</th>
+                <th>Email</th>
+                <th>Estatus</th>
+                <th>Acciones</th>
+            </tr>
+        </ng-template>
+
+        <ng-template pTemplate="body" let-veterinarian>
+            <tr>
+                <td>{{veterinarian.id}}</td>
+                <td>{{veterinarian.name}}</td>
+                <td>{{veterinarian.specialty}}</td>
+                <td>{{veterinarian.phone}}</td>
+                <td>{{veterinarian.email}}</td>
+                <td>
+                    <p-tag [value]="veterinarian.status" [severity]="veterinarian.status === 'activo' ? 'success' : 'danger'"></p-tag>
+                </td>
+                <td>
+                    <p-button
+                        icon="pi pi-pencil"
+                        styleClass="p-button-warning p-button-sm"
+                        [routerLink]="['/veterinarians/update', veterinarian.id]">
+                    </p-button>
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>
